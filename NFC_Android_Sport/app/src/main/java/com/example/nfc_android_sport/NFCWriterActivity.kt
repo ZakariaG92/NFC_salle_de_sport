@@ -8,6 +8,7 @@ import android.nfc.tech.Ndef
 import android.nfc.tech.NdefFormatable
 import android.os.Bundle
 import android.widget.Toast
+import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.UnsupportedEncodingException
@@ -19,6 +20,7 @@ class NFCWriterActivity : Activity() {
     private var pendingIntent: PendingIntent? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.write_layout)
         //setContentView(R.layout.write_tag_layout)
 
         // Get default NfcAdapter and PendingIntent instances
@@ -56,7 +58,9 @@ class NFCWriterActivity : Activity() {
 
     public override fun onNewIntent(intent: Intent) {
 
-       writeNFC(intent,"Zakaria GASMI")
+        val button = findViewById<TextInputLayout>(R.id.readBox);
+       val txtFromEditText=  button.editText?.text;
+       writeNFC(intent,txtFromEditText.toString())
     }
 
     fun writeNFC(intent: Intent, textToWrite:String){

@@ -8,16 +8,23 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.io.UnsupportedEncodingException
 import kotlin.experimental.and
 
 class NFCReaderActivity : Activity() {
     private var nfcAdapter: NfcAdapter? = null
     private var pendingIntent: PendingIntent? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.activity_main)
+
+
+        // setContentView(R.layout.activity_main)
 
         // Get default NfcAdapter and PendingIntent instances
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
