@@ -24,8 +24,8 @@ mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
 // remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
-//const uri = 'mongodb+srv://DotNetUser:DotNetUser0@cluster0.wu4c5.mongodb.net/DbDotNetProject?retryWrites=true&w=majority';
-const uri = 'mongodb+srv://Allan:koensieg@angular.ugcwq.mongodb.net/assignments?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://DotNetUser:DotNetUser0@cluster0.wu4c5.mongodb.net/DbDotNetProject?retryWrites=true&w=majority';
+//const uri = 'mongodb+srv://Allan:koensieg@angular.ugcwq.mongodb.net/assignments?retryWrites=true&w=majority';
 
 const options = {
     useNewUrlParser: true,
@@ -116,6 +116,11 @@ app.route(prefix + '/clients')
     .get(client.getClients)
     .post(client.postClient)
     .put(client.updateClient);
+
+    
+app.route(prefix + '/client/id/:id')
+.get(client.getClientById)
+
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
 console.log('Serveur démarré sur http://localhost:' + port);
