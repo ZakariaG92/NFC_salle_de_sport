@@ -121,6 +121,9 @@ app.route(prefix + '/clients')
 app.route(prefix + '/client/id/:id')
 .get(client.getClientById)
 
+app.route(prefix + '/client/porte/:id')
+.get(client.ouvrirPorte)
+
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
 console.log('Serveur démarré sur http://localhost:' + port);

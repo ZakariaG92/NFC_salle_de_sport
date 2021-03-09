@@ -35,6 +35,44 @@ function getClientById(req, res){
     })
 }
 
+// 
+function ouvrirPorte(req, res){
+    let Clientid = parseInt(req.params.id);
+
+    Client.findOne({id: Clientid}, (err, Clients) =>{
+        if(err){res.send(err)}
+        res.json(Clients);
+
+        let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
+        let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
+
+        var dateAuj = new Date();
+        var mydate = new Date(clientDateFin);
+
+        var difference = dateAuj - mydate; // difference in milliseconds
+
+        console.log(difference);
+
+        if (difference <= 0)
+            { 
+                switch (clientPack) 
+                {
+                    case 1:
+                        console.log('Ouverture de porte');
+                        break;
+                    case 2:
+                        console.log('Ouverture de porte/Boisson');
+                        break;
+                    case 3:
+                        console.log('Ouverture de porte/Boisson/cours collectif');
+                        break;
+                }
+            }
+        else
+            { return "Error"; }           
+    })
+}
+
 
 // Récupérer un Client par son id (GET)
 function getClientRenduTrue(req, res){
@@ -98,4 +136,4 @@ function deleteClient(req, res) {
 
 
 
-module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById };
+module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById, ouvrirPorte };
