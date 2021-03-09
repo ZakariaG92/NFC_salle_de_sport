@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NFC_Android_Sport</string>
+    <string name = "nom"> Entrer un nom </string>
+    <string name = "prenom"> Entrer un prenom </string>
+    <string name = "abonnement"> Entrer un abonnement </string>
+    <string name = "date"> Entrer une date </string>
+    <string name = "id_user"> Entrer votre id </string>
+
+    <string name = "connection"> Se connecter </string>
+
+</resources>

@@ -1,0 +1,67 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/api/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+NFC_Android_Sport/*.iml
+NFC_Android_Sport/.gradle
+NFC_Android_Sport/local.properties
+NFC_Android_Sport/.idea/caches
+NFC_Android_Sport/.idea/libraries
+NFC_Android_Sport/.idea/modules.xml
+NFC_Android_Sport/.idea/workspace.xml
+NFC_Android_Sport/.idea/navEditor.xml
+NFC_Android_Sport/.idea/compiler.xml
+NFC_Android_Sport/.idea/.name
+NFC_Android_Sport/.idea/misc.xml
+NFC_Android_Sport/.idea/gradle.xml
+NFC_Android_Sport/.idea/vcs.xml
+NFC_Android_Sport/.idea/assetWizardSettings.xml
+NFC_Android_Sport/.DS_Store
+NFC_Android_Sport/build
+NFC_Android_Sport/captures
+NFC_Android_Sport/.externalNativeBuild
+NFC_Android_Sport/.cxx
+NFC_Android_Sport/local.properties
