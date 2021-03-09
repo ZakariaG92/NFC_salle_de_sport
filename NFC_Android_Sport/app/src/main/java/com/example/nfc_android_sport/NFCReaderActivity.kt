@@ -17,7 +17,7 @@ class NFCReaderActivity : Activity() {
     private var pendingIntent: PendingIntent? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.read_tag_layout)
+       // setContentView(R.layout.activity_main)
 
         // Get default NfcAdapter and PendingIntent instances
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
@@ -57,9 +57,15 @@ class NFCReaderActivity : Activity() {
         nfcAdapter?.disableForegroundDispatch(this)
     }
 
-    /*
+
     public override fun onNewIntent(intent: Intent) {
 
+     readNfc(intent);
+    }
+
+    fun readNfc(intent: Intent):String {
+
+        var response:String = "";
         // Get the Tag object:
         // ===================
         // retrieve the action from the received intent
@@ -74,7 +80,7 @@ class NFCReaderActivity : Activity() {
             // Get the Tag object information:
             // ===============================
             // get the UTD from the tag
-            val uid = tag.id
+            val uid = tag!!.id
             message = "Tag détecté UID : $uid"
 
             // get the technology list from the tag
@@ -115,10 +121,12 @@ class NFCReaderActivity : Activity() {
                                 payload.size - languageSize - 1, charset(encoding)
                             )
                             message = "$message, NDEF MESSAGE : $recordTxt"
+                            response= recordTxt;
                         } catch (e: UnsupportedEncodingException) {
                             e.printStackTrace()
                         }
                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                        print(message + "is recieved ")
 
                         /*                       //check NDEF record TNF:
                         //======================
@@ -145,5 +153,5 @@ class NFCReaderActivity : Activity() {
                 }
             }
         }
-    }*/
+        return response};
 }

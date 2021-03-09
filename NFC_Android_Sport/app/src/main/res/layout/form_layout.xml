@@ -25,12 +25,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/connection"
-        android:layout_width="match_parent"
+        android:id="@+id/readTag"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@string/connection" />
+        tools:text="Read Tag"
+        android:text="read Tag"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/writeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/readTag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="write Tag"
+        android:text="write Tag"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

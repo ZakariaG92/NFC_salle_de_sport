@@ -39,6 +39,8 @@ class NFCWriterActivity : Activity() {
             if (!nfcAdapter!!.isEnabled) {
                 // process error NFC not activated…
             }
+
+            // forcer le nfc sur le tel
             nfcAdapter!!.enableForegroundDispatch(this, pendingIntent, null, null)
         }
     }
@@ -54,6 +56,10 @@ class NFCWriterActivity : Activity() {
 
     public override fun onNewIntent(intent: Intent) {
 
+       writeNFC(intent,"Zakaria GASMI")
+    }
+
+    fun writeNFC(intent: Intent, textToWrite:String){
         // Get the Tag object:
         // ===================
         // retrieve the action from the received intent
@@ -70,8 +76,8 @@ class NFCWriterActivity : Activity() {
             val dimension = 1
             val ndefRecords = arrayOfNulls<NdefRecord>(dimension)
             // Example with an URI NDEF record:
-            val uriTxt = "http://www.mbds-fr.org" // your URI in String format
-            var ndefRecord = NdefRecord.createUri(uriTxt)
+            // your URI in String format
+            var ndefRecord = NdefRecord.createUri(textToWrite)
             // Add the record to the NDEF message:
             ndefRecords[0] = ndefRecord
             val ndefMessage = NdefMessage(ndefRecords)
@@ -85,7 +91,7 @@ class NFCWriterActivity : Activity() {
                 msgTxt.toByteArray(Charset.forName("US-ASCII"))
             )
             // NDEF record URI type
-            ndefRecord = NdefRecord.createUri(uriTxt)
+            ndefRecord = NdefRecord.createUri(textToWrite)
 
             // NDEF record WELL KNOWN type (NFC Forum): TEXT
             // =============================================
