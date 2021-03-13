@@ -53,23 +53,64 @@ function ouvrirPorte(req, res){
 
         console.log(difference);
 
-        if (difference <= 0)
+        if ((difference <= 0) && (clientPack = 1)) 
             { 
-                switch (clientPack) 
-                {
-                    case 1:
-                        console.log('Ouverture de porte');
-                        break;
-                    case 2:
-                        console.log('Ouverture de porte/Boisson');
-                        break;
-                    case 3:
-                        console.log('Ouverture de porte/Boisson/cours collectif');
-                        break;
-                }
+                console.log('Ouverture de porte');
             }
         else
             { return "Error"; }           
+    })
+}
+
+// 
+function prendreBoisson(req, res){
+    let Clientid = parseInt(req.params.id);
+
+    Client.findOne({id: Clientid}, (err, Clients) =>{
+        if(err){res.send(err)}
+        res.json(Clients);
+
+        let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
+        let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
+
+        var dateAuj = new Date();
+        var mydate = new Date(clientDateFin);
+
+        var difference = dateAuj - mydate; // difference in milliseconds
+
+        console.log(difference);
+
+        if ((difference <= 0) && (clientPack = 2)) 
+            {
+                console.log('Ouverture de porte/Boisson');
+            }
+        else { return "Error"; }           
+    })
+}
+
+// 
+function accesAtout(req, res){
+    let Clientid = parseInt(req.params.id);
+
+    Client.findOne({id: Clientid}, (err, Clients) =>{
+        if(err){res.send(err)}
+        res.json(Clients);
+
+        let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
+        let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
+
+        var dateAuj = new Date();
+        var mydate = new Date(clientDateFin);
+
+        var difference = dateAuj - mydate; // difference in milliseconds
+
+        console.log(difference);
+
+        if ((difference <= 0) && (clientPack = 3)) 
+            {
+                console.log('Ouverture de porte/Boisson/cours collectif');
+            }
+        else { return "Error"; }           
     })
 }
 
@@ -136,4 +177,4 @@ function deleteClient(req, res) {
 
 
 
-module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById, ouvrirPorte };
+module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById, ouvrirPorte, prendreBoisson, accesAtout };
