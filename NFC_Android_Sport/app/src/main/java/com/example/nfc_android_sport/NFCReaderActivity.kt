@@ -24,6 +24,7 @@ class NFCReaderActivity : Activity() {
         super.onCreate(savedInstanceState)
 
 
+
         // setContentView(R.layout.activity_main)
 
         // Get default NfcAdapter and PendingIntent instances

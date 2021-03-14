@@ -2,6 +2,7 @@ let Client = require('../model/client');
 
 // Récupérer tous les Clients (GET)
 function getClients(req, res){
+    console.log("get clients")
     Client.find((err, Clients) => {
         if(err){
             res.send(err)

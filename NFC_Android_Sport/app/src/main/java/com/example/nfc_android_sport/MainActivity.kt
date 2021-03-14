@@ -11,6 +11,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.nfc_android_sport.fragments.Client2Fragment
+import com.example.nfc_android_sport.fragments.WriteCardFragment
 import java.io.UnsupportedEncodingException
 import kotlin.experimental.and
 
@@ -23,9 +26,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.form_layout)
+        setContentView(R.layout.activity_main)
 
-        val readTag = findViewById<Button>(R.id.readTag);
+
+        val client= Client2Fragment();
+        val writeCardFragment= WriteCardFragment();
+        changeFragment(writeCardFragment)
+      /*  val readTag = findViewById<Button>(R.id.readTag);
         val writeTag = findViewById<Button>(R.id.writeTag);
 
         readTag.setOnClickListener {
@@ -37,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, NFCWriterActivity::class.java)
             startActivity(intent);
         }
-
+*/
 
         // id_user = findViewById(R.id.id_user)
 
@@ -58,4 +65,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
+}
+
+fun MainActivity.changeFragment(fragment: Fragment) {
+    supportFragmentManager.beginTransaction().apply {
+        //3) on remplace le contenu du container
+        replace(R.id.fragment_container, fragment)
+        //4) on ajoute la transaction dans la backstack
+        // addToBackStack(null)
+    }.commit()
+    // 5) on commit la transaction
 }
