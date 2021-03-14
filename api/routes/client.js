@@ -236,11 +236,12 @@ function getClientRenduTrue(req, res){
 
 function getClientParNom(req, res){
     let ClientNom = req.params.nom;
+    
 
-    Client.find({nom: ClientNom}, (err, Clients) =>{
+    Client.find({$or :[{nom:ClientNom},{prenom:ClientNom}]}, (err, Clients) =>{
         if(err){res.send(err)}
         res.json(Clients);
-    })
+    }).collation( { locale: 'en', strength: 2 })
 }
 
 // Ajout d'un Client (POST)
