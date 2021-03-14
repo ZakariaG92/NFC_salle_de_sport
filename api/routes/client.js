@@ -231,6 +231,17 @@ function getClientRenduTrue(req, res){
         res.json(Clients);
     })
 }
+
+
+function getClientParNom(req, res){
+    let ClientNom = req.params.nom;
+
+    Client.find({nom: ClientNom}, (err, Clients) =>{
+        if(err){res.send(err)}
+        res.json(Clients);
+    })
+}
+
 // Ajout d'un Client (POST)
 function postClient(req, res){
     console.log("test post :");
@@ -284,4 +295,4 @@ function deleteClient(req, res) {
 
 
 
-module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById, ouvrirPorte, prendreBoisson, accesCours };
+module.exports = { getClients, postClient, getClient, updateClient, deleteClient, getClientRenduTrue, getClientById, ouvrirPorte, prendreBoisson, accesCours, getClientParNom };

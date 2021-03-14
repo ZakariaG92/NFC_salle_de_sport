@@ -117,9 +117,13 @@ app.route(prefix + '/clients')
     .post(client.postClient)
     .put(client.updateClient);
 
-    
+// Client par ID
 app.route(prefix + '/client/id/:id')
 .get(client.getClientById)
+
+// Client par Nom
+app.route(prefix + '/client/nom/:nom')
+.get(client.getClientParNom)
 
 // Porte
 app.route(prefix + '/client/porte/:id')
