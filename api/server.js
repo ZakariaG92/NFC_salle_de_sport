@@ -117,9 +117,25 @@ app.route(prefix + '/clients')
     .post(client.postClient)
     .put(client.updateClient);
 
-    
+// Client par ID
 app.route(prefix + '/client/id/:id')
 .get(client.getClientById)
+
+// Client par Nom
+app.route(prefix + '/client/nom/:nom')
+.get(client.getClientParNom)
+
+// Porte
+app.route(prefix + '/client/porte/:id')
+.get(client.ouvrirPorte)
+
+// Boisson
+app.route(prefix + '/client/boisson/:id')
+.get(client.prendreBoisson)
+
+// Accées cours
+app.route(prefix + '/client/cours/:id')
+.get(client.accesCours)
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
