@@ -121,8 +121,17 @@ app.route(prefix + '/clients')
 app.route(prefix + '/client/id/:id')
 .get(client.getClientById)
 
+// Porte
 app.route(prefix + '/client/porte/:id')
 .get(client.ouvrirPorte)
+
+// Boisson
+app.route(prefix + '/client/boisson/:id')
+.get(client.prendreBoisson)
+
+// Accées cours
+app.route(prefix + '/client/cours/:id')
+.get(client.accesCours)
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
