@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter un client"
+        app:layout_constraintBottom_toTopOf="@id/generateCard"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generer carte abonnee"
+        android:id="@+id/generateCard"
+        app:layout_constraintBottom_toBottomOf="@id/addClient"
+
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceder au club"
+        android:id="@+id/accesClub"
+        app:layout_constraintTop_toBottomOf="@+id/generateCard"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distribuer boisson"
+        android:id="@+id/boisson"
+        app:layout_constraintTop_toBottomOf="@+id/accesClub"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acces cours collectifs"
+        android:id="@+id/cours"
+        app:layout_constraintTop_toBottomOf="@+id/boisson"
+        />
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

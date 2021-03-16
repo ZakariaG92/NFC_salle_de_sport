@@ -248,7 +248,8 @@ function getClientParNom(req, res){
 function postClient(req, res){
     console.log("test post :");
     let client = new Client();
-    console.log(client.nom)
+    console.log(req.body.nom)
+    
     client.id=req.body.id;
     client.nom=req.body.nom;
     client.prenom=req.body.prenom;

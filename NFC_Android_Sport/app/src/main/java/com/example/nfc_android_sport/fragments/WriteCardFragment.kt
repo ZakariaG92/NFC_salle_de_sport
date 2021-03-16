@@ -30,7 +30,7 @@ import java.net.URL
  * create an instance of this fragment.
  */
 class WriteCardFragment : Fragment() {
-    private val BASE_URL = "http://48dfd54a543a.ngrok.io/api/"
+
     // TODO: Rename and change types of parameters
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,7 +98,7 @@ private const val ARG_PARAM2 = "param2"
 }
     private suspend fun getData(view: View, url:String): String? {
 
-        val  url =BASE_URL+ url
+        val  url =Utility.BASE_URL+ url
         val myURL = URL(url)
         return  Utility.get(myURL)
         //val result = repository.listQuery()

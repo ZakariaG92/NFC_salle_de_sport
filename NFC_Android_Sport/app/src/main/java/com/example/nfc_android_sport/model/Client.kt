@@ -1,5 +1,7 @@
 package com.example.nfc_android_sport.model
 
+import java.util.*
+
 
 public class Client(
         val id: Int,

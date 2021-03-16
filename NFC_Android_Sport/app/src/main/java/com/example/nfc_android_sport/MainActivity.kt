@@ -1,24 +1,26 @@
 package com.example.nfc_android_sport
 
 import android.app.PendingIntent
-import android.content.Intent
-import android.nfc.NdefMessage
+
 import android.nfc.NfcAdapter
-import android.nfc.Tag
-import android.nfc.tech.Ndef
+
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.nfc_android_sport.fragments.Client2Fragment
+import com.example.nfc_android_sport.fragments.MainFragment
 import com.example.nfc_android_sport.fragments.WriteCardFragment
-import java.io.UnsupportedEncodingException
-import kotlin.experimental.and
+import com.example.nfc_android_sport.api.Utility.FRAGMENT;
+import com.example.nfc_android_sport.fragments.AddClientFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    val mainFragment= MainFragment();
+    val writeCardFragment= WriteCardFragment();
+    val addClientFragment= AddClientFragment();
 
     private var nfcAdapter: NfcAdapter? = null
     private var pendingIntent: PendingIntent? = null
@@ -27,39 +29,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val ChoiceCategorie = intent.extras
 
-
-        val client= Client2Fragment();
-        val writeCardFragment= WriteCardFragment();
-        changeFragment(writeCardFragment)
-      /*  val readTag = findViewById<Button>(R.id.readTag);
-        val writeTag = findViewById<Button>(R.id.writeTag);
-
-        readTag.setOnClickListener {
-             val intent = Intent(this, NFCReaderActivity::class.java)
-             startActivity(intent);
+        if (ChoiceCategorie != null) {
+          val value = ChoiceCategorie.getString("key")
+            when (value) {
+                FRAGMENT.WRITE_CARD.toString()-> { changeFragment(writeCardFragment) }
+                FRAGMENT.ADD_CLIENT.toString()-> { changeFragment(addClientFragment) }
+            }
+        }else
+        {
+            changeFragment(mainFragment)
         }
-
-        writeTag.setOnClickListener {
-            val intent = Intent(this, NFCWriterActivity::class.java)
-            startActivity(intent);
-        }
-*/
-
-        // id_user = findViewById(R.id.id_user)
-
-
-        //val intent = Intent(this, NFCWriterActivity::class.java)
-       // startActivity(intent);
-      //  val intent = Intent(this, NFCReaderActivity::class.java)
-       // startActivity(intent);
-
 
     }
     private fun needNfc() {
         Toast.makeText(this, "Ce service est disponible uniquement sur un téléphone NFC", Toast.LENGTH_LONG).show()
         finish()
     }
+
+
 
 
 

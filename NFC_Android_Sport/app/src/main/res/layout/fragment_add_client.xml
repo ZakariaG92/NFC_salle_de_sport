@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddClientFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/addClientNom"
+        android:layout_width="192dp"
+        android:layout_height="50dp"
+        android:text="@string/nom"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+    <EditText
+        android:id="@+id/addClientDate"
+        android:layout_width="187dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@id/addClientPrenom"
+        tools:layout_editor_absoluteX="115dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/addClientPrenom"
+        android:layout_width="192dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/prenom"
+        app:layout_constraintTop_toBottomOf="@id/addClientNom"
+        tools:layout_editor_absoluteX="110dp" />
+
+    <Button
+        android:id="@+id/createButtonClient"
+        android:layout_width="135dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="72dp"
+        android:text="Créer"
+        app:backgroundTint="#222121"
+        app:layout_constraintTop_toBottomOf="@id/addClientDate"
+        tools:layout_editor_absoluteX="138dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
