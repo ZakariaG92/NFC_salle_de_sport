@@ -14,30 +14,50 @@
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="33dp"
-   >
+        tools:layout_editor_absoluteY="33dp">
 
     </com.google.android.material.textfield.TextInputEditText>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_width="116dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchName"
-        tools:layout_editor_absoluteX="161dp" />
+        app:layout_constraintWidth_percent="@android:integer/config_mediumAnimTime" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_user"
-        android:layout_width="301dp"
-        android:layout_height="244dp"
+        android:layout_width="326dp"
+        android:layout_height="269dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="52dp"
         android:layout_marginRight="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchButton" />
-    "
 
-        tools:layout_editor_absoluteY="96dp"
-        tools:listitem="@layout/list_item" />
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="241dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="36dp"
+        android:clickable="false"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycler_user" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/writeButton"
+        android:id="@+id/idToWriteToCard"
+        android:visibility="invisible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

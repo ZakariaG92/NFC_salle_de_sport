@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nfc_android_sport.R
@@ -28,14 +27,28 @@ class  ClientAdapter(private val dataset: List<Client>) :
             var nom = root.findViewById<TextView>(R.id.userName)
             var prenom = root.findViewById<TextView>(R.id.userSurName)
 
-            // buttonArticle.setText(item.name)
-
+            val onclickClient= root.findViewById<TableRow>(R.id.tableClient)
 
             id.setText(item.id.toString())
             nom.setText(item.nom.toString())
             prenom.setText(item.prenom.toString())
 
+            onclickClient.setOnClickListener {
+                print("you have clicked on the user number : "+ id.text.toString())
+                Toast.makeText(onclickClient.context , "you have clicked on  "+ id.text.toString(), Toast.LENGTH_SHORT).show()
 
+                var idToWriteToCard = onclickClient.rootView.findViewById<TextView>(R.id.idToWriteToCard)
+                var writeButton = onclickClient.rootView.findViewById<Button>(R.id.writeButton)
+                writeButton.visibility = View.VISIBLE
+                writeButton.isClickable = true;
+                writeButton.setText("write  "+nom.text.toString()+"  on card")
+
+                idToWriteToCard.setText(id.text.toString())
+
+
+
+
+            }
 
         }
 

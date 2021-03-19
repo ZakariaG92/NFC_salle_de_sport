@@ -1,19 +1,17 @@
 package com.example.nfc_android_sport
 
 import android.app.PendingIntent
-
 import android.nfc.NfcAdapter
-
 import android.os.Bundle
-
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.nfc_android_sport.fragments.Client2Fragment
+import com.example.nfc_android_sport.api.Utility.ACTION
+import com.example.nfc_android_sport.api.Utility.FRAGMENT
+import com.example.nfc_android_sport.fragments.ActionFragment
+import com.example.nfc_android_sport.fragments.AddClientFragment
 import com.example.nfc_android_sport.fragments.MainFragment
 import com.example.nfc_android_sport.fragments.WriteCardFragment
-import com.example.nfc_android_sport.api.Utility.FRAGMENT;
-import com.example.nfc_android_sport.fragments.AddClientFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     val mainFragment= MainFragment();
     val writeCardFragment= WriteCardFragment();
     val addClientFragment= AddClientFragment();
+
 
     private var nfcAdapter: NfcAdapter? = null
     private var pendingIntent: PendingIntent? = null
@@ -32,10 +31,40 @@ class MainActivity : AppCompatActivity() {
         val ChoiceCategorie = intent.extras
 
         if (ChoiceCategorie != null) {
+
           val value = ChoiceCategorie.getString("key")
+
+
+
+
             when (value) {
+                /*ici le choix des bouttons pour les fragments*/
                 FRAGMENT.WRITE_CARD.toString()-> { changeFragment(writeCardFragment) }
                 FRAGMENT.ADD_CLIENT.toString()-> { changeFragment(addClientFragment) }
+
+                /*ici les action pour la lecture des cartes*/
+                ACTION.ACCES_CLUB.toString()->
+                {
+                    val  idClient = intent.extras!!.getString("id")
+                    var actionFragment= ActionFragment.newInstance( idClient!!,ACTION.ACCES_CLUB.toString());
+                    changeFragment(actionFragment)
+                }
+
+                ACTION.BOISSON.toString()->
+                {
+                    val  idClient = intent.extras!!.getString("id")
+                    var actionFragment= ActionFragment.newInstance( idClient!!,ACTION.BOISSON.toString());
+                    changeFragment(actionFragment)
+                }
+
+                ACTION.COURS_COLLECTIFS.toString()->
+                {
+                    val  idClient = intent.extras!!.getString("id")
+                    var actionFragment= ActionFragment.newInstance( idClient!!,ACTION.COURS_COLLECTIFS.toString());
+                    changeFragment(actionFragment)
+                }
+
+
             }
         }else
         {

@@ -42,7 +42,7 @@ function ouvrirPorte(req, res){
 
     Client.findOne({id: Clientid}, (err, Clients) =>{
         if(err){res.send(err)}
-        res.json(Clients);
+      //  res.json(Clients);
 
         let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
         let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
@@ -79,6 +79,7 @@ function ouvrirPorte(req, res){
                     "message":"null"
                 };
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour; 
             }
         else
@@ -90,6 +91,7 @@ function ouvrirPorte(req, res){
                 };
                 
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour;     
             }           
     })
@@ -102,7 +104,7 @@ function prendreBoisson(req, res){
 
     Client.findOne({id: Clientid}, (err, Clients) =>{
         if(err){res.send(err)}
-        res.json(Clients);
+        
 
         let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
         let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
@@ -140,6 +142,7 @@ function prendreBoisson(req, res){
                 
 
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour; 
             }
         else
@@ -151,6 +154,7 @@ function prendreBoisson(req, res){
                 };
                 
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour;     
             }           
     })
@@ -162,7 +166,7 @@ function accesCours(req, res){
 
     Client.findOne({id: Clientid}, (err, Clients) =>{
         if(err){res.send(err)}
-        res.json(Clients);
+        
 
         let clientPack = Clients.abonnement[Clients.abonnement.length - 1].pack;
         let clientDateFin = Clients.abonnement[Clients.abonnement.length - 1].dateFin;
@@ -206,6 +210,7 @@ function accesCours(req, res){
                 
 
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour; 
             }
         else
@@ -217,6 +222,7 @@ function accesCours(req, res){
                 };
                 
                 console.log(jsonDeRetour)
+                res.json(jsonDeRetour);
                 return jsonDeRetour;     
             }           
     })
@@ -249,7 +255,7 @@ function postClient(req, res){
     console.log("test post :");
     let client = new Client();
     console.log(req.body.nom)
-    
+
     client.id=req.body.id;
     client.nom=req.body.nom;
     client.prenom=req.body.prenom;

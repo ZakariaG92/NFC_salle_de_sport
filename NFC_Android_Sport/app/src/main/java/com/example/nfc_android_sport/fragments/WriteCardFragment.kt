@@ -1,5 +1,6 @@
 package com.example.nfc_android_sport.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nfc_android_sport.NFCWriterActivity
+import com.example.nfc_android_sport.R
+import com.example.nfc_android_sport.R.layout
+import com.example.nfc_android_sport.api.Utility
 import com.example.nfc_android_sport.api.adapters.ClientAdapter
 import com.example.nfc_android_sport.model.Client
-
-import com.example.nfc_android_sport.R
-import com.example.nfc_android_sport.R.*
-
-import com.example.nfc_android_sport.api.Utility
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 import java.net.URL
 
 /**
@@ -49,18 +48,34 @@ class WriteCardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val getClientByNameButton = view.findViewById<Button>(R.id.searchButton);
+        val writeButton = view.findViewById<Button>(R.id.writeButton);
+        val idToWriteToCard = view.findViewById<TextView>(R.id.idToWriteToCard);
+
+
+
         var gson: Gson = Gson();
+
+
 
         getClientByNameButton.setOnClickListener {
 
             lifecycleScope.launch(Dispatchers.IO) {
                 val nameBox= view.findViewById<TextView>(R.id.searchName);
+
+
                 val data= getData(view,"client/nom/"+nameBox.text.toString());
                 val client:List<Client> = gson.fromJson(data, Array<Client>::class.java).toList()
 
                 bindData(client,view)
             }
         }
+
+        writeButton.setOnClickListener {
+            val intent = Intent(writeButton.context, NFCWriterActivity::class.java)
+            intent.putExtra("key", idToWriteToCard.text.toString())
+            writeButton.context.startActivity(intent)
+        }
+
 
 
 
@@ -71,6 +86,7 @@ class WriteCardFragment : Fragment() {
 
             bindData(clien,view)
         }
+
 
 
 

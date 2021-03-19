@@ -2,11 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consraintId"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:layout_height="50dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"><![CDATA[
     >
 
+
+    ]]>
 
     <TextView
         android:id="@+id/userId"
@@ -18,7 +23,7 @@
         android:textColor="#000000"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="16dp"
         tools:text="Id01" />
@@ -52,6 +57,14 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="16dp"
         tools:text="Doe" />
+
+    <TableRow
+        android:id="@+id/tableClient"
+        android:layout_width="401dp"
+        android:layout_height="44dp"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="3dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

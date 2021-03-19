@@ -8,7 +8,6 @@ import android.nfc.tech.Ndef
 import android.nfc.tech.NdefFormatable
 import android.os.Bundle
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputLayout
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.UnsupportedEncodingException
@@ -18,9 +17,12 @@ import java.util.*
 class NFCWriterActivity : Activity() {
     private var nfcAdapter: NfcAdapter? = null
     private var pendingIntent: PendingIntent? = null
+    private  var messageToWrite: String? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.write_layout)
+        setContentView(R.layout.writer)
+
+         messageToWrite = intent.extras!!.getString("key").toString();
         //setContentView(R.layout.write_tag_layout)
 
         // Get default NfcAdapter and PendingIntent instances
@@ -58,9 +60,8 @@ class NFCWriterActivity : Activity() {
 
     public override fun onNewIntent(intent: Intent) {
 
-        val button = findViewById<TextInputLayout>(R.id.readBox);
-       val txtFromEditText=  button.editText?.text;
-       writeNFC(intent,txtFromEditText.toString())
+
+       writeNFC(intent,messageToWrite!!)
     }
 
     fun writeNFC(intent: Intent, textToWrite:String){
@@ -141,7 +142,7 @@ class NFCWriterActivity : Activity() {
                     // write the NDEF message on the tag
                     ndef.writeNdefMessage(ndefMessage)
                     ndef.close()
-                    Toast.makeText(this, "Message écrit avec succès", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Id client num : "+textToWrite.toString()+" écrit avec succès", Toast.LENGTH_SHORT).show()
                 } catch (e1: IOException) {
                     e1.printStackTrace()
                 } catch (e2: FormatException) {

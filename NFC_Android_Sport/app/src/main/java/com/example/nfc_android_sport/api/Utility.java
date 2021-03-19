@@ -24,12 +24,18 @@ import okhttp3.Response;
 public class Utility {
 
 
-    public static final String BASE_URL = "http://69d1d2076ffc.ngrok.io/api/";
+    public static final String BASE_URL = "http://1229a3c2051c.ngrok.io/api/";
 
     public enum FRAGMENT {
         WRITE_CARD,
         MAIN,
         ADD_CLIENT
+    }
+
+    public enum ACTION {
+        ACCES_CLUB,
+        BOISSON,
+        COURS_COLLECTIFS
     }
 
     public static String get(URL url) throws Exception {

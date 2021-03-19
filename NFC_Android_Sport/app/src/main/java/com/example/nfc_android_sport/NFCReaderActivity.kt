@@ -8,24 +8,30 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import com.example.nfc_android_sport.api.Utility
+import com.example.nfc_android_sport.api.Utility.ACTION
 import java.io.UnsupportedEncodingException
+import java.net.URL
 import kotlin.experimental.and
 
 class NFCReaderActivity : Activity() {
     private var nfcAdapter: NfcAdapter? = null
     private var pendingIntent: PendingIntent? = null
+    lateinit var buttonread:Button;
 
 
+    var actionToDo:String?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.readlayout)
+
+        actionToDo = intent.extras!!.getString("key").toString();
 
 
 
-        // setContentView(R.layout.activity_main)
 
         // Get default NfcAdapter and PendingIntent instances
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
@@ -66,9 +72,53 @@ class NFCReaderActivity : Activity() {
     }
 
 
+
+
+
+
     public override fun onNewIntent(intent: Intent) {
 
-     readNfc(intent);
+        buttonread= this.findViewById(R.id.button_read)
+    val messageReader= readNfc(intent);
+
+        if (messageReader != null && actionToDo!= null) {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("id",  messageReader)
+            when (actionToDo) {
+
+
+                ACTION.ACCES_CLUB.toString()->
+                {
+                    intent.putExtra("key",  ACTION.ACCES_CLUB.toString())
+                    buttonread.context.startActivity(intent)
+                }
+
+                ACTION.BOISSON.toString()->
+                {
+                    intent.putExtra("key",  ACTION.BOISSON.toString())
+                    buttonread.context.startActivity(intent)
+                }
+
+                ACTION.COURS_COLLECTIFS.toString()->
+                {
+                    intent.putExtra("key",  ACTION.COURS_COLLECTIFS.toString())
+                    buttonread.context.startActivity(intent)
+
+                }
+
+            }
+        }
+    }
+
+    private suspend fun getData(view: View, url:String): String? {
+
+        val  url = Utility.BASE_URL+ url
+        val myURL = URL(url)
+        return  Utility.get(myURL)
+        //val result = repository.listQuery()
+
+//  bindData(result!!.articles,view)
+
     }
 
     fun readNfc(intent: Intent):String {
@@ -133,7 +183,7 @@ class NFCReaderActivity : Activity() {
                         } catch (e: UnsupportedEncodingException) {
                             e.printStackTrace()
                         }
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                         print(message + "is recieved ")
 
                         /*                       //check NDEF record TNF:
@@ -161,5 +211,8 @@ class NFCReaderActivity : Activity() {
                 }
             }
         }
-        return response};
+        return response
+    };
 }
+
+
