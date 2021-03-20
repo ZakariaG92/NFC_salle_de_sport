@@ -24,7 +24,7 @@ import okhttp3.Response;
 public class Utility {
 
 
-    public static final String BASE_URL = "http://1229a3c2051c.ngrok.io/api/";
+    public static final String BASE_URL = "https://warm-journey-56638.herokuapp.com/api/";
 
     public enum FRAGMENT {
         WRITE_CARD,
